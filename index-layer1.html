@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Layer 1 - Landing</title>
+  <style>
+    :root {
+      --bg: #0b1a2b;
+      --fg: #e6e6e6;
+      --accent: #39a0ed;
+      --card: rgba(255,255,255,0.06);
+    }
+    html, body { margin: 0; padding: 0; height: 100%; background: var(--bg); color: var(--fg); font-family: sans-serif; }
+    .page { height: 100%; display: grid; grid-template-rows: auto 1fr auto; }
+    header { padding: 20px; font-weight: bold; letter-spacing: .5px; }
+    .content { padding: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .slide { background: var(--card); border: 1px solid #335; border-radius: 8px; padding: 20px; min-height: 180px; display: flex; align-items: center; justify-content: center; text-align: center; }
+    .cover { font-size: 28px; font-weight: 700; }
+    #contents-menu { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    #contents-menu a { display: block; padding: 14px; background: #1e2a3a; border: 1px solid #345; border-radius: 6px; color: #fff; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="page" id="layer1">
+    <header>Layer 1 - Landing</header>
+
+    <!-- Slide 1: cover1-landing -->
+    <section id="cover1-landing" class="slide" data-next="#cover2" tabindex="0">
+      <div>Cover 1 - Landing (Slide 1 of Layer 1)</div>
+    </section>
+
+    <!-- Slide 2: cover2 -->
+    <section id="cover2" class="slide" data-next="#contents-menu" tabindex="0">
+      <div>Cover 2 (Slide 2 of Layer 1)</div>
+    </section>
+
+    <!-- Slide 3: contents-menu (Layer 1) -->
+    <section id="contents-menu" class="slide" data-next="" tabindex="0">
+      <div>
+        Contents Menu (Layer 1) - Click to start Layer 2
+        <div id="contents-grid" style="margin-top:12px;">
+          <!-- 15 links to Layer 2 start slides -->
+          <div style="grid-column:1 / span 3;">
+            <a href="index-layer2.html#thesis" style="display:inline-block;width:100%;">Thesis</a>
+          </div>
+          <div style="grid-column:1 / span 3;">
+            <a href="index-layer2.html#argument1" style="display:inline-block;width:100%;">Argument 1</a>
+          </div>
+          <div style="grid-column:1 / span 3;">
+            <a href="index-layer2.html#argument2" style="display:inline-block;width:100%;">Argument 2</a>
+          </div>
+          <div style="grid-column:1 / span 3;">
+            <a href="index-layer2.html#argument3" style="display:inline-block;width:100%;">Argument 3</a>
+          </div>
+          <div style="grid-column:1 / span 3;">
+            <a href="index-layer2.html#argument4" style="display:inline-block;width:100%;">Argument 4</a>
+          </div>
+          <div style="grid-column:1 / span 3;">
+            <a href="index-layer2.html#solution" style="display:inline-block;width:100%;">Solution</a>
+          </div>
+          <div style="grid-column:1 / span 3;">
+            <a href="index-layer2.html#facts" style="display:inline-block;width:100%;">Facts</a>
+          </div>
+          <div style="grid-column:1 / span 3;">
+            <a href="index-layer2.html#philosophy" style="display:inline-block;width:100%;">Philosophy</a>
+          </div>
+          <div style="grid-column:1 / span 3;">
+            <a href="index-layer2.html#methodology-verbal" style="display:inline-block;width:100%;">Methodology - Verbal</a>
+          </div>
+          <div style="grid-column:1 / span 3;">
+            <a href="index-layer2.html#methodology-visual" style="display:inline-block;width:100%;">Methodology - Visual</a>
+          </div>
+          <div style="grid-column:1 / span 3;">
+            <a href="index-layer2.html#implementation" style="display:inline-block;width:100%;">Implementation</a>
+          </div>
+          <div style="grid-column:1 / span 3;">
+            <a href="index-layer2.html#output" style="display:inline-block;width:100%;">Output</a>
+          </div>
+          <div style="grid-column:1 / span 3;">
+            <a href="index-layer2.html#about-me" style="display:inline-block;width:100%;">About Me</a>
+          </div>
+          <div style="grid-column:1 / span 3;">
+            <a href="index-layer2.html#compliance" style="display:inline-block;width:100%;">Compliance</a>
+          </div>
+          <div style="grid-column:1 / span 3;">
+            <a href="index-layer2.html#full-version" style="display:inline-block;width:100%;">Full Version</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    // Simple click-to-next behavior within Layer 1 slides
+    (function(){
+      const slides = Array.from(document.querySelectorAll('#layer1 .slide'));
+      // add click handler to non-last slides that aren't contents-menu
+      slides.forEach((el, idx) => {
+        // determine if this is last in the set
+        const isLast = (idx === slides.length - 1);
+        if (!isLast) {
+          el.style.cursor = 'pointer';
+          el.addEventListener('click', () => {
+            const nxt = el.getAttribute('data-next');
+            if (nxt) location.hash = nxt;
+          });
+        } else {
+          // last slide should return to contents-menu
+          el.addEventListener('click', () => {
+            location.hash = '#contents-menu';
+          });
+        }
+      });
+      // prevent accidental navigation when clicking internal links
+      document.querySelectorAll('#layer1 a').forEach(a=>{
+        a.addEventListener('click', e => e.stopPropagation());
+      });
+    })();
+  </script>
+</body>
+</html>
