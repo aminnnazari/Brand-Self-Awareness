@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Layer 2 - Slides</title>
+  <style>
+    :root { --bg: #0e1a2b; --fg: #e6e6e6; --card: rgba(255,255,255,0.07); }
+    html, body { margin: 0; padding: 0; height: 100%; background: var(--bg); color: var(--fg); font-family: sans-serif; }
+    .page { height: 100%; display: grid; grid-template-rows: auto 1fr; }
+    header { padding: 16px; font-weight: bold; }
+    .slide { padding: 20px; display: grid; place-items: center; min-height: 180px; border: 1px solid #335; border-radius: 8px; margin: 16px; background: var(--card); text-align: center; }
+    section { display: none; padding: 20px; }
+    section.active { display: block; }
+    #layer2-contents { padding: 12px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    #layer2-contents a { display: block; padding: 12px; background: #1e2a3a; color: #fff; text-decoration: none; border-radius: 6px; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="page" id="layer2">
+    <header>Layer 2 - Slides</header>
+
+    <!-- Layer 2 slides (placeholders) -->
+    <section id="thesis" class="slide active" data-next="#argument1" tabindex="0">
+      <div>Slide 2.1 Thesis</div>
+    </section>
+    <section id="argument1" class="slide" data-next="#argument2" tabindex="0">
+      <div>Slide 2.2 Argument 1</div>
+    </section>
+    <section id="argument2" class="slide" data-next="#argument3" tabindex="0">
+      <div>Slide 2.3 Argument 2</div>
+    </section>
+    <section id="argument3" class="slide" data-next="#argument4" tabindex="0">
+      <div>Slide 2.4 Argument 3</div>
+    </section>
+    <section id="argument4" class="slide" data-next="#solution" tabindex="0">
+      <div>Slide 2.5 Argument 4</div>
+    </section>
+    <section id="solution" class="slide" data-next="#facts" tabindex="0">
+      <div>Slide 2.6 Solution</div>
+    </section>
+    <section id="facts" class="slide" data-next="#philosophy" tabindex="0">
+      <div>Slide 2.7 Facts</div>
+      <div style="font-size:12px; margin-top:6px;">
+        <a href="index-layer3.html#facts-gemini-report" style="color:#9bd1ff; text-decoration:underline;">Open Facts Gemini Report</a>
+      </div>
+    </section>
+    <section id="philosophy" class="slide" data-next="#methodology-verbal" tabindex="0">
+      <div>Slide 2.8 Philosophy</div>
+    </section>
+    <section id="methodology-verbal" class="slide" data-next="#methodology-visual" tabindex="0">
+      <div>Slide 2.9 Methodology - Verbal</div>
+    </section>
+    <section id="methodology-visual" class="slide" data-next="#implementation" tabindex="0">
+      <div>Slide 2.10 Methodology - Visual</div>
+    </section>
+    <section id="implementation" class="slide" data-next="#output" tabindex="0">
+      <div>Slide 2.11 Implementation</div>
+    </section>
+    <section id="output" class="slide" data-next="#about-me" tabindex="0">
+      <div>Slide 2.12 Output</div>
+    </section>
+    <section id="about-me" class="slide" data-next="#compliance" tabindex="0">
+      <div>Slide 2.13 About Me</div>
+    </section>
+    <section id="compliance" class="slide" data-next="#full-version" tabindex="0">
+      <div>Slide 2.14 Compliance</div>
+    </section>
+    <section id="full-version" class="slide" data-next="" tabindex="0">
+      <div>Slide 2.15 Full Version</div>
+    </section>
+
+    <!-- Contents Menu (Layer 2) -->
+    <section id="layer2-contents" class="slide" style="display:none;" tabindex="0">
+      <div>Layer 2 Contents Menu</div>
+    </section>
+  </div>
+
+  <script>
+    // Simple navigation: show/hide sections, next on click
+    (function(){
+      const layer = document.getElementById('layer2');
+      const slides = Array.from(layer.querySelectorAll('section.slide'));
+      let index = 0;
+
+      function show(i){
+        slides.forEach((s,idx) => s.style.display = (idx===i) ? 'grid' : 'none');
+        slides[i].focus();
+        index = i;
+      }
+
+      // initialize
+      show(0);
+
+      // click-to-next for non-last slides
+      slides.forEach((el, i) => {
+        const isLast = (i === slides.length - 1);
+        if (!isLast) {
+          el.style.cursor = 'pointer';
+          el.addEventListener('click', () => show(i+1));
+        } else {
+          // last slide returns to contents menu
+          el.addEventListener('click', () => {
+            // simulate moving to contents
+            location.hash = '#layer2-contents';
+          });
+        }
+      });
+
+      // prevent accidental navigation by internal links
+      layer.querySelectorAll('a').forEach(a=>{
+        a.addEventListener('click', e => e.stopPropagation());
+      });
+
+      // hash navigation (optional) - quick jump if user uses URL hash
+      window.addEventListener('hashchange', () => {
+        // reset to first slide if hash matches nothing
+        if (location.hash === '#layer2-contents') {
+          // show contents placeholder
+          slides.forEach(s => s.style.display = 'none');
+          // simple fallback
+          document.getElementById('layer2-contents').style.display = 'block';
+        } else {
+          // not implementing deep linking in this placeholder
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
