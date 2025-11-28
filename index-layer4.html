@@ -1,0 +1,100 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
+  <title>Layer 4 - Layered Content</title>  
+  <style>  
+    :root { --bg: #0b1b2a; --fg: #e9e9e9; --card: rgba(255,255,255,0.08); }  
+    html, body { margin: 0; padding: 0; height: 100%; background: var(--bg); color: var(--fg); font-family: sans-serif; }  
+    .page { min-height: 100%; display: grid; grid-template-rows: auto 1fr; }  
+    header { padding: 16px; font-weight: bold; }  
+    .set { display: none; padding: 16px; }  
+    .slide { padding: 20px; display: grid; place-items: center; min-height: 120px; border: 1px solid #356; border-radius: 8px; margin: 12px; background: var(--card); text-align: center; }  
+    .contents { padding: 12px; border-top: 1px solid #333; margin-top: 8px; }  
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }  
+  </style>  
+</head>  
+<body>  
+  <div class="page" id="layer4">  
+    <header>Layer 4 - Slides</header>  
+
+    <!-- Layer 4: Eight Sets (placeholder names aligned to previous pattern) -->  
+    <!-- Set 1 -->  
+    <section id="set-a" class="set" aria-label="Layer 4 Set A" style="display: block;">  
+      <div id="l4-a1" class="slide" tabindex="0" data-next="#l4-a2"><div>Layer 4 - Set A, Slide 1</div></div>  
+      <div id="l4-a2" class="slide" tabindex="0" data-next="#l4-a3"><div>Layer 4 - Set A, Slide 2</div></div>  
+      <div id="l4-a3" class="slide" tabindex="0" data-next="#l4-a4"><div>Layer 4 - Set A, Slide 3</div></div>  
+      <div id="l4-a4" class="slide" tabindex="0" data-next="">{{Slide 4 - Set A, Slide 4}}</div>  
+    </section>  
+    <!-- Set 2 -->  
+    <section id="set-b" class="set" aria-label="Layer 4 Set B" style="display: block;">  
+      <div id="l4-b1" class="slide" tabindex="0" data-next="#l4-b2"><div>Layer 4 - Set B, Slide 1</div></div>  
+      <div id="l4-b2" class="slide" tabindex="0" data-next="#l4-b3"><div>Layer 4 - Set B, Slide 2</div></div>  
+      <div id="l4-b3" class="slide" tabindex="0" data-next="#l4-b4"><div>Layer 4 - Set B, Slide 3</div></div>  
+      <div id="l4-b4" class="slide" tabindex="0" data-next="">{{Layer 4 - Set B, Slide 4}}</div>  
+    </section>  
+    <!-- Set 3 -->  
+    <section id="set-c" class="set" aria-label="Layer 4 Set C" style="display: block;">  
+      <div id="l4-c1" class="slide" tabindex="0" data-next="#l4-c2"><div>Layer 4 - Set C, Slide 1</div></div>  
+      <div id="l4-c2" class="slide" tabindex="0" data-next="#l4-c3"><div>Layer 4 - Set C, Slide 2</div></div>  
+      <div id="l4-c3" class="slide" tabindex="0" data-next="#l4-c4"><div>Layer 4 - Set C, Slide 3</div></div>  
+      <div id="l4-c4" class="slide" tabindex="0" data-next="">{{Layer 4 - Set C, Slide 4}}</div>  
+    </section>  
+    <!-- Set 4 -->  
+    <section id="set-d" class="set" aria-label="Layer 4 Set D" style="display: block;">  
+      <div id="l4-d1" class="slide" tabindex="0" data-next="#l4-d2"><div>Layer 4 - Set D, Slide 1</div></div>  
+      <div id="l4-d2" class="slide" tabindex="0" data-next="#l4-d3"><div>Layer 4 - Set D, Slide 2</div></div>  
+      <div id="l4-d3" class="slide" tabindex="0" data-next="#l4-d4"><div>Layer 4 - Set D, Slide 3</div></div>  
+      <div id="l4-d4" class="slide" tabindex="0" data-next="">{{Layer 4 - Set D, Slide 4}}</div>  
+    </section>  
+    <!-- Set 5 -->  
+    <section id="set-e" class="set" aria-label="Layer 4 Set E" style="display: block;">  
+      <div id="l4-e1" class="slide" tabindex="0" data-next="#l4-e2"><div>Layer 4 - Set E, Slide 1</div></div>  
+      <div id="l4-e2" class="slide" tabindex="0" data-next="#l4-e3"><div>Layer 4 - Set E, Slide 2</div></div>  
+      <div id="l4-e3" class="slide" tabindex="0" data-next="#l4-e4"><div>Layer 4 - Set E, Slide 3</div></div>  
+      <div id="l4-e4" class="slide" tabindex="0" data-next="">{{Layer 4 - Set E, Slide 4}}</div>  
+    </section>  
+    <!-- Set 6 -->  
+    <section id="set-f" class="set" aria-label="Layer 4 Set F" style="display: block;">  
+      <div id="l4-f1" class="slide" tabindex="0" data-next="#l4-f2"><div>Layer 4 - Set F, Slide 1</div></div>  
+      <div id="l4-f2" class="slide" tabindex="0" data-next="#l4-f3"><div>Layer 4 - Set F, Slide 2</div></div>  
+      <div id="l4-f3" class="slide" tabindex="0" data-next="#l4-f4"><div>Layer 4 - Set F, Slide 3</div></div>  
+      <div id="l4-f4" class="slide" tabindex="0" data-next="">{{Layer 4 - Set F, Slide 4}}</div>  
+    </section>  
+    <!-- Set 7 -->  
+    <section id="set-g" class="set" aria-label="Layer 4 Set G" style="display: block;">  
+      <div id="l4-g1" class="slide" tabindex="0" data-next="#l4-g2"><div>Layer 4 - Set G, Slide 1</div></div>  
+      <div id="l4-g2" class="slide" tabindex="0" data-next="#l4-g3"><div>Layer 4 - Set G, Slide 2</div></div>  
+      <div id="l4-g3" class="slide" tabindex="0" data-next="#l4-g4"><div>Layer 4 - Set G, Slide 3</div></div>  
+      <div id="l4-g4" class="slide" tabindex="0" data-next="">{{Layer 4 - Set G, Slide 4}}</div>  
+    </section>  
+    <!-- Set 8 -->  
+    <section id="set-h" class="set" aria-label="Layer 4 Set H" style="display: block;">  
+      <div id="l4-h1" class="slide" tabindex="0" data-next="#l4-h2"><div>Layer 4 - Set H, Slide 1</div></div>  
+      <div id="l4-h2" class="slide" tabindex="0" data-next="#l4-h3"><div>Layer 4 - Set H, Slide 2</div></div>  
+      <div id="l4-h3" class="slide" tabindex="0" data-next="#l4-h4"><div>Layer 4 - Set H, Slide 3</div></div>  
+      <div id="l4-h4" class="slide" tabindex="0" data-next="">{{Layer 4 - Set H, Slide 4}}</div>  
+    </section>  
+
+    <!-- Layer 4 Contents Menu placeholder (start next layer) -->  
+    <section id="layer4-contents-menu" class="contents" aria-label="Layer 4 Contents Menu" style="display: block;">  
+      <h3>Layer 4 Contents Menu (Placeholder)</h3>  
+      <p>This area indicates where Layer 5 would start, or serves as a placeholder for navigation.</p>  
+      <div class="grid" aria-label="Contents shortcuts">  
+        <div class="slide" tabindex="0" data-next="#layer5-start" style="min-height:120px; display:flex; align-items:center; justify-content:center;">  
+          <div>Go to Layer 5 Start (placeholder)</div>  
+        </div>  
+        <div class="slide" tabindex="0" data-next="#layer5-start-2" style="min-height:120px; display:flex; align-items:center; justify-content:center;">  
+          <div>Layer 5 – Alternate Start (placeholder)</div>  
+        </div>  
+      </div>  
+    </section>  
+  </div>  
+
+  <script>  
+    // Simple forward navigation: Enter/Space moves to next if defined  
+    document.addEventListener('keydown', (e) => {  
+      if (e.key === 'Enter' || e.key === ' ') {  
+        const focused = document.activeElement;  
+        if (focused && focused.getAttribute
