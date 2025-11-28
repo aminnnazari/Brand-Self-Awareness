@@ -1,10 +1,81 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-  <meta charset="UTF-8" />  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
-  <title>Layer 3 - Layered Content</title>  
-  <style>  
-    :root { --bg: #0a1a2a; --fg: #e6e6e6; --card: rgba(255,255,255,0.07); }  
-    html, body { margin: 0; padding: 0; height: 100%; background: var(--bg); color: var(--fg); font-family: sans-serif; }  
-    .page { height:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Layer 3 - Layered Content</title>
+  <style>
+    :root { --bg: #0a1a2a; --fg: #e6e6e6; --card: rgba(255,255,255,0.07); }
+    html, body { margin: 0; padding: 0; height: 100%; background: var(--bg); color: var(--fg); font-family: sans-serif; }
+    .page { min-height: 100%; display: grid; grid-template-rows: auto 1fr; }
+    header { padding: 16px; font-weight: bold; }
+    .set { display: none; padding: 16px; }
+    .slide { padding: 20px; display: grid; place-items: center; min-height: 160px; border: 1px solid #335; border-radius: 8px; margin: 12px; background: var(--card); text-align: center; }
+    .contents { padding: 12px; border-top: 1px solid #333; margin-top: 8px; }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  </style>
+</head>
+<body>
+  <div class="page" id="layer3">
+    <header>Layer 3 - Slides</header>
+
+    <!-- Layer 3: Facts Gemini Report (7 slides) -->
+    <section id="facts-gemini-report" class="set" aria-label="Facts Gemini Report" style="display: block;">
+      <div id="fg1" class="slide" tabindex="0" data-next="#fg2"><div>Slide 3.1 Facts Gemini Report</div></div>
+      <div id="fg2" class="slide" tabindex="0" data-next="#fg3"><div>Slide 3.2 Facts Gemini Report</div></div>
+      <div id="fg3" class="slide" tabindex="0" data-next="#fg4"><div>Slide 3.3 Facts Gemini Report</div></div>
+      <div id="fg4" class="slide" tabindex="0" data-next="#fg5"><div>Slide 3.4 Facts Gemini Report</div></div>
+      <div id="fg5" class="slide" tabindex="0" data-next="#fg6"><div>Slide 3.5 Facts Gemini Report</div></div>
+      <div id="fg6" class="slide" tabindex="0" data-next="#fg7"><div>Slide 3.6 Facts Gemini Report</div></div>
+      <div id="fg7" class="slide" tabindex="0" data-next=""><div>Slide 3.7 Facts Gemini Report</div></div>
+    </section>
+
+    <!-- Layer 3: Compliance Int (9 slides) -->
+    <section id="compliance-int" class="set" aria-label="Compliance Int" style="display: block;">
+      <div id="ci1" class="slide" tabindex="0" data-next="#ci2"><div>Slide 3.8 Compliance Int</div></div>
+      <div id="ci2" class="slide" tabindex="0" data-next="#ci3"><div>Slide 3.9 Compliance Int</div></div>
+      <div id="ci3" class="slide" tabindex="0" data-next="#ci4"><div>Slide 3.10 Compliance Int</div></div>
+      <div id="ci4" class="slide" tabindex="0" data-next="#ci5"><div>Slide 3.11 Compliance Int</div></div>
+      <div id="ci5" class="slide" tabindex="0" data-next="#ci6"><div>Slide 3.12 Compliance Int</div></div>
+      <div id="ci6" class="slide" tabindex="0" data-next="#ci7"><div>Slide 3.13 Compliance Int</div></div>
+      <div id="ci7" class="slide" tabindex="0" data-next="#ci8"><div>Slide 3.14 Compliance Int</div></div>
+      <div id="ci8" class="slide" tabindex="0" data-next="#ci9"><div>Slide 3.15 Compliance Int</div></div>
+      <div id="ci9" class="slide" tabindex="0" data-next=""><div>Slide 3.16 Compliance Int</div></div>
+    </section>
+
+    <!-- Layer 3 Contents Menu placeholder (start Layer 4) -->
+    <section id="layer3-contents-menu" class="contents" aria-label="Layer 3 Contents Menu" style="display: block;">
+      <h3>Layer 3 Contents Menu (Placeholder)</h3>
+      <p>Use this area to navigate to Layer 4 starts or back to Layer 3 contents as needed.</p>
+      <div class="grid" aria-label="Contents shortcuts">
+        <div class="slide" tabindex="0" data-next="#layer4-start" style="min-height:120px; display:flex; align-items:center; justify-content:center;">
+          <div>Go to Layer 4 Start (placeholder)</div>
+        </div>
+        <div class="slide" tabindex="0" data-next="#layer4-start-2" style="min-height:120px; display:flex; align-items:center; justify-content:center;">
+          <div>Layer 4 – Alternate Start (placeholder)</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Minimal, safe navigation logic for the demo (no external dependencies)
+    document.addEventListener('keydown', (e) => {
+      // Optional: advance on Enter/Space if a focused slide has data-next
+      if (e.key === 'Enter' || e.key === ' ') {
+        const focused = document.activeElement;
+        if (focused && focused.getAttribute('data-next')) {
+          const nextId = focused.getAttribute('data-next');
+          if (nextId) {
+            const nextEl = document.querySelector(nextId);
+            if (nextEl) nextEl.focus();
+          }
+        }
+      }
+    });
+
+    // Ensure the two main sections are visible
+    // In this full version, both sets are displayed as a single, complete Layer 3 block.
+  </script>
+</body>
+</html>
